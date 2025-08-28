@@ -377,8 +377,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize particles
     initParticles();
     
-    // Load static projects
-    loadProjects();
+    // Don't load projects - they're already in HTML
     
     
     // Initialize contact form
