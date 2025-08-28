@@ -78,10 +78,10 @@
                 </category>
                 <category name="Frontend &amp; Tools" icon="fas fa-laptop-code">
                     <skill name="JavaScript/TypeScript" level="85" />
-                    <skill name="React/Vue.js" level="80" />
+                    <skill name="Lua Scripting" level="80" />
+                    <skill name="React/Vue.js" level="75" />
                     <skill name="Git/CI/CD" level="93" />
                     <skill name="Linux/Bash" level="88" />
-                    <skill name="Monitoring/Grafana" level="75" />
                 </category>
                 <category name="Security &amp; Networking" icon="fas fa-shield-alt">
                     <skill name="Network Security" level="82" />

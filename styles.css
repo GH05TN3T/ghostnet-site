@@ -406,6 +406,8 @@ section {
 .tech-item.docker i { color: #2496ed; }
 .tech-item.aws i { color: #ff9900; }
 .tech-item.git i { color: #f05032; }
+.tech-item.javascript i { color: #f1e05a; }
+.tech-item.lua i { color: #000080; }
 
 /* Skills Section */
 .skills-grid {

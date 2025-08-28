@@ -126,7 +126,7 @@ async function loadGitHubRepos() {
     
     try {
         console.log('Fetching GitHub repositories...');
-        const response = await fetch('https://api.github.com/users/GH05TN3T/repos?sort=updated&per_page=6', {
+        const response = await fetch('https://api.github.com/users/GH05TN3T/repos?sort=updated&per_page=8', {
             method: 'GET',
             headers: {
                 'Accept': 'application/vnd.github.v3+json',
@@ -330,7 +330,9 @@ function createProjectCard(repo) {
         'CSS': '#563d7c',
         'Shell': '#89e051',
         'Dockerfile': '#384d54',
-        'TypeScript': '#2b7489'
+        'TypeScript': '#2b7489',
+        'Lua': '#000080',
+        'PHP': '#4F5D95'
     };
     
     const languageColor = languageColors[repo.language] || '#6e7681';
