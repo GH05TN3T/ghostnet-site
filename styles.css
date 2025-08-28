@@ -488,6 +488,27 @@ section {
     font-size: 1.1rem;
 }
 
+/* Testimonial Loading States */
+.testimonial-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.testimonial-loading i {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--accent-primary);
+}
+
+.testimonial-loading .fa-spinner {
+    animation: spin 1s linear infinite;
+}
+
 /* Projects Section */
 .projects {
     background: var(--bg-secondary);

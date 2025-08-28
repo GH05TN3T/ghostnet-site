@@ -218,20 +218,48 @@ async function loadGitHubRepos() {
 
 // Load testimonials
 async function loadTestimonials() {
+    const testimonialsGrid = document.getElementById('testimonials-grid');
+    
+    // Show loading state
+    testimonialsGrid.innerHTML = `
+        <div class="testimonial-loading">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Loading testimonials...</p>
+        </div>
+    `;
+    
     try {
+        console.log('Fetching testimonials...');
         const response = await fetch('./testimonials.json');
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
         const data = await response.json();
+        console.log('Testimonials loaded:', data.testimonials.length);
         
-        const testimonialsGrid = document.getElementById('testimonials-grid');
+        // Clear loading state
+        testimonialsGrid.innerHTML = '';
         
-        data.testimonials.forEach(testimonial => {
-            const testimonialCard = createTestimonialCard(testimonial);
-            testimonialsGrid.appendChild(testimonialCard);
-        });
+        if (data.testimonials && data.testimonials.length > 0) {
+            data.testimonials.forEach(testimonial => {
+                const testimonialCard = createTestimonialCard(testimonial);
+                testimonialsGrid.appendChild(testimonialCard);
+            });
+        } else {
+            testimonialsGrid.innerHTML = '<p class="error-message">No testimonials available.</p>';
+        }
+        
     } catch (error) {
         console.error('Error loading testimonials:', error);
-        const testimonialsGrid = document.getElementById('testimonials-grid');
-        testimonialsGrid.innerHTML = '<p class="error-message">Unable to load testimonials at this time.</p>';
+        testimonialsGrid.innerHTML = `
+            <div class="testimonial-loading">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p>Unable to load testimonials: ${error.message}</p>
+                <button onclick="loadTestimonials()" class="btn btn-primary">Retry</button>
+            </div>
+        `;
     }
 }
 
