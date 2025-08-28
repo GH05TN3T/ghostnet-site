@@ -492,16 +492,19 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Initialize everything when DOM is loaded
+// Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize navigation
-    initNavigation();
+    // Initialize mobile navigation
+    initMobileNav();
     
     // Initialize smooth scrolling
     initSmoothScrolling();
     
-    // Initialize animations
-    initAnimations();
+    // Initialize navbar scroll effect
+    initNavbarScroll();
+    
+    // Initialize particles
+    initParticles();
     
     // Load GitHub repositories
     loadGitHubRepos();
@@ -512,8 +515,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize contact form
     initContactForm();
     
-    // Initialize typing animation
-    initTypingAnimation();
+    // Initialize skill progress bars
+    initSkillBars();
     
     // Initialize stats counter
     initStatsCounter();
