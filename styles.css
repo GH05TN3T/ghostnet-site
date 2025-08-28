@@ -582,9 +582,9 @@ section {
 
 .projects-footer {
     text-align: center;
-    background-color: #f0f0f0;
-    padding: 1rem;
-    border-top: 1px solid var(--border-color);
+    background: transparent;
+    padding: 2rem 0;
+    margin-top: 2rem;
 }
 
 /* Testimonials Section */
