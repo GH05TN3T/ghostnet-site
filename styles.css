@@ -504,11 +504,14 @@ section {
 }
 
 .project-card {
-    background: var(--bg-tertiary);
+    background: rgba(255, 255, 255, 0.05);
     border-radius: var(--border-radius);
-    border: 1px solid var(--border-color);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    padding: 1.5rem;
     overflow: hidden;
     transition: var(--transition);
+    backdrop-filter: blur(10px);
+    min-height: 300px;
 }
 
 .project-card:hover {
@@ -518,24 +521,82 @@ section {
 }
 
 .project-header {
-    padding: 1.5rem;
-    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
 }
 
 .project-title {
     font-size: 1.25rem;
     font-weight: 600;
-    margin-bottom: 0.5rem;
+    margin: 0;
     color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .project-description {
     color: var(--text-secondary);
     font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
 }
 
-.project-content {
-    padding: 1.5rem;
+
+.project-language {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.language-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.project-stats {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.project-topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.topic-tag {
+    background: rgba(0, 212, 255, 0.1);
+    color: var(--primary-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.project-link:hover {
+    color: var(--text-primary);
+    transform: translateX(5px);
 }
 
 .project-tech {
