@@ -185,31 +185,6 @@ function loadProjects() {
 }
 
 
-// GitHub API Integration
-async function fetchGitHubRepos() {
-    try {
-        const response = await fetch('https://api.github.com/users/GH05TN3T/repos?sort=updated&per_page=6');
-        const repos = await response.json();
-        
-        const projectsGrid = document.getElementById('projects-grid');
-        projectsGrid.innerHTML = '';
-        
-        repos.forEach(repo => {
-            if (!repo.fork && repo.description) {
-                const projectCard = createProjectCard(repo);
-                projectsGrid.appendChild(projectCard);
-            }
-        });
-    } catch (error) {
-        console.error('Error fetching GitHub repos:', error);
-        document.getElementById('projects-grid').innerHTML = `
-            <div class="project-loading">
-                <i class="fas fa-exclamation-triangle"></i>
-                <p>Unable to load projects. Please check GitHub API.</p>
-            </div>
-        `;
-    }
-}
 
 function createProjectCard(repo) {
     const card = document.createElement('div');
