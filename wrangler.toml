@@ -1,13 +1,12 @@
 name = "ghostnet-site"
 compatibility_date = "2024-08-28"
 
-[env.production]
+# Static site configuration
+[site]
+bucket = "./"
+
+# Routes for custom domain
 routes = [
   { pattern = "cyborgjedi.com/*", zone_name = "cyborgjedi.com" },
   { pattern = "www.cyborgjedi.com/*", zone_name = "cyborgjedi.com" }
 ]
-
-# Static site configuration
-[site]
-bucket = "./"
-entry-point = "index.html"
