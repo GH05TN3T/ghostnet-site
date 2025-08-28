@@ -257,7 +257,7 @@ function createProjectCard(repo) {
     card.innerHTML = `
         <div class="project-header">
             <h3 class="project-title">
-                <i class="fab fa-github"></i>
+                <i class="fa-brands fa-github"></i>
                 ${repo.name}
             </h3>
             <p class="project-description">${repo.description || 'No description available'}</p>
@@ -285,7 +285,7 @@ function createProjectCard(repo) {
             </div>
             <div class="project-links">
                 <a href="${repo.html_url}" target="_blank" class="project-link">
-                    <i class="fab fa-github"></i>
+                    <i class="fa-brands fa-github"></i>
                     View Code
                 </a>
                 ${repo.homepage ? `
