@@ -50,10 +50,10 @@
             <content>
                 <paragraph>I'm a seasoned Full Stack Developer and DevOps Engineer with a passion for creating scalable, enterprise-grade solutions.</paragraph>
                 <stats>
-                    <stat value="75" label="Projects Completed" />
-                    <stat value="7" label="Years Experience" />
-                    <stat value="150" label="Happy Clients" />
-                    <stat value="25" label="Technologies Mastered" />
+                    <stat value="10" label="Projects Completed" />
+                    <stat value="5" label="Years Experience" />
+                    <stat value="10" label="Happy Clients" />
+                    <stat value="10" label="Technologies Mastered" />
                 </stats>
             </content>
         </about>
