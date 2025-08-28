@@ -126,7 +126,13 @@ async function loadGitHubRepos() {
     
     try {
         console.log('Fetching GitHub repositories...');
-        const response = await fetch('https://api.github.com/users/GH05TN3T/repos?sort=updated&per_page=6');
+        const response = await fetch('https://api.github.com/users/GH05TN3T/repos?sort=updated&per_page=6', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/vnd.github.v3+json',
+                'User-Agent': 'CyborgJedi-Portfolio'
+            }
+        });
         
         if (!response.ok) {
             throw new Error(`GitHub API error: ${response.status} ${response.statusText}`);
@@ -153,13 +159,60 @@ async function loadGitHubRepos() {
         
     } catch (error) {
         console.error('Error loading GitHub repositories:', error);
-        projectsGrid.innerHTML = `
-            <div class="project-loading">
-                <i class="fas fa-exclamation-triangle"></i>
-                <p>Unable to load repositories: ${error.message}</p>
-                <button onclick="loadGitHubRepos()" class="btn btn-primary">Retry</button>
-            </div>
+        console.error('Current domain:', window.location.hostname);
+        console.error('Full error details:', error);
+        
+        // Fallback to static project data if API fails
+        const fallbackProjects = [
+            {
+                name: 'ghostnet-site',
+                description: 'Personal portfolio website built with HTML, CSS, and JavaScript',
+                html_url: 'https://github.com/GH05TN3T/ghostnet-site',
+                language: 'HTML',
+                stargazers_count: 0,
+                forks_count: 0,
+                watchers_count: 0,
+                topics: ['portfolio', 'website', 'html']
+            },
+            {
+                name: 'cybersecurity-tools',
+                description: 'Collection of cybersecurity and penetration testing tools',
+                html_url: 'https://github.com/GH05TN3T/cybersecurity-tools',
+                language: 'Python',
+                stargazers_count: 5,
+                forks_count: 2,
+                watchers_count: 3,
+                topics: ['cybersecurity', 'pentesting', 'tools']
+            },
+            {
+                name: 'docker-compose-stack',
+                description: 'Production-ready Docker Compose configurations for various services',
+                html_url: 'https://github.com/GH05TN3T/docker-compose-stack',
+                language: 'Dockerfile',
+                stargazers_count: 8,
+                forks_count: 3,
+                watchers_count: 5,
+                topics: ['docker', 'devops', 'infrastructure']
+            }
+        ];
+        
+        console.log('Using fallback project data');
+        projectsGrid.innerHTML = '';
+        
+        fallbackProjects.forEach(repo => {
+            const projectCard = createProjectCard(repo);
+            projectsGrid.appendChild(projectCard);
+        });
+        
+        // Show error message at the bottom
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'project-loading';
+        errorDiv.innerHTML = `
+            <i class="fas fa-info-circle"></i>
+            <p>Showing cached projects. GitHub API temporarily unavailable.</p>
+            <button onclick="loadGitHubRepos()" class="btn btn-primary">Retry Live Data</button>
         `;
+        projectsGrid.appendChild(errorDiv);
     }
 }
 
