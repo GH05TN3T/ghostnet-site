@@ -1,14 +1,5 @@
 # Cloudflare Pages redirects and rewrites
 
-# Redirect www to non-www
-https://www.cyborgjedi.com/* https://cyborgjedi.com/:splat 301!
-
-# SPA fallback for any 404s
-/* /index.html 200
-
-# API proxy for GitHub (optional, to avoid CORS issues)
-/api/github/* https://api.github.com/:splat 200
-
 # Security redirects
 /admin/* / 301
 /wp-admin/* / 301
