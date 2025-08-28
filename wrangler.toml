@@ -1,6 +1,10 @@
 name = "ghostnet-site"
 compatibility_date = "2024-08-28"
 
+# Static assets configuration
+[assets]
+directory = "./"
+
 # Routes for custom domain
 routes = [
   { pattern = "cyborgjedi.com/*", zone_name = "cyborgjedi.com" },
