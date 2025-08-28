@@ -548,7 +548,109 @@ section {
     text-align: center;
 }
 
+/* Testimonials Section */
+.testimonials {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, #0f0f23 0%, #16213e 100%);
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: 15px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonial-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #00d4ff, #ff6b35);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover::before {
+    transform: scaleX(1);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 212, 255, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 212, 255, 0.1);
+}
+
+.testimonial-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.testimonial-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #00d4ff;
+    object-fit: cover;
+}
+
+.testimonial-info h4 {
+    color: #ffffff;
+    margin: 0 0 0.25rem 0;
+    font-size: 1.1rem;
+}
+
+.testimonial-info p {
+    color: #00d4ff;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.testimonial-rating {
+    display: flex;
+    gap: 0.25rem;
+    margin-top: 0.5rem;
+}
+
+.star {
+    color: #ff6b35;
+    font-size: 1rem;
+}
+
+.testimonial-text {
+    color: #cccccc;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+.testimonial-project {
+    color: #7c3aed;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
 /* Contact Section */
+.contact {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+}
+
 .contact-content {
     display: grid;
     grid-template-columns: 1fr 1fr;

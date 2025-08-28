@@ -112,6 +112,75 @@ document.querySelectorAll('section, .about-stats, .skills').forEach(el => {
     observer.observe(el);
 });
 
+// Load GitHub repositories
+async function loadGitHubRepos() {
+    try {
+        const response = await fetch('https://api.github.com/users/GH05TN3T/repos?sort=updated&per_page=6');
+        const repos = await response.json();
+        
+        const projectsGrid = document.getElementById('projects-grid');
+        
+        repos.forEach(repo => {
+            if (!repo.fork) {
+                const projectCard = createProjectCard(repo);
+                projectsGrid.appendChild(projectCard);
+            }
+        });
+    } catch (error) {
+        console.error('Error loading GitHub repositories:', error);
+        const projectsGrid = document.getElementById('projects-grid');
+        projectsGrid.innerHTML = '<p class="error-message">Unable to load repositories at this time.</p>';
+    }
+}
+
+// Load testimonials
+async function loadTestimonials() {
+    try {
+        const response = await fetch('./testimonials.json');
+        const data = await response.json();
+        
+        const testimonialsGrid = document.getElementById('testimonials-grid');
+        
+        data.testimonials.forEach(testimonial => {
+            const testimonialCard = createTestimonialCard(testimonial);
+            testimonialsGrid.appendChild(testimonialCard);
+        });
+    } catch (error) {
+        console.error('Error loading testimonials:', error);
+        const testimonialsGrid = document.getElementById('testimonials-grid');
+        testimonialsGrid.innerHTML = '<p class="error-message">Unable to load testimonials at this time.</p>';
+    }
+}
+
+// Create testimonial card
+function createTestimonialCard(testimonial) {
+    const card = document.createElement('div');
+    card.className = 'testimonial-card';
+    
+    const stars = '★'.repeat(testimonial.rating) + '☆'.repeat(5 - testimonial.rating);
+    
+    card.innerHTML = `
+        <div class="testimonial-header">
+            <img src="${testimonial.avatar}" alt="${testimonial.name}" class="testimonial-avatar">
+            <div class="testimonial-info">
+                <h4>${testimonial.name}</h4>
+                <p>${testimonial.position}</p>
+                <div class="testimonial-rating">
+                    ${Array.from({length: testimonial.rating}, () => '<span class="star">★</span>').join('')}
+                </div>
+            </div>
+        </div>
+        <div class="testimonial-text">
+            "${testimonial.text}"
+        </div>
+        <div class="testimonial-project">
+            Project: ${testimonial.project}
+        </div>
+    `;
+    
+    return card;
+}
+
 // GitHub API Integration
 async function fetchGitHubRepos() {
     try {
@@ -313,14 +382,30 @@ style.textContent = `
 document.head.appendChild(style);
 
 // Initialize everything when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    fetchGitHubRepos();
-    createParticles();
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize navigation
+    initNavigation();
     
-    // Add fade-in class to elements
-    document.querySelectorAll('section > .container').forEach(el => {
-        el.classList.add('fade-in');
-    });
+    // Initialize smooth scrolling
+    initSmoothScrolling();
+    
+    // Initialize animations
+    initAnimations();
+    
+    // Load GitHub repositories
+    loadGitHubRepos();
+    
+    // Load testimonials
+    loadTestimonials();
+    
+    // Initialize contact form
+    initContactForm();
+    
+    // Initialize typing animation
+    initTypingAnimation();
+    
+    // Initialize stats counter
+    initStatsCounter();
 });
 
 // Preloader

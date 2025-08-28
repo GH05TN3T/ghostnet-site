@@ -50,9 +50,10 @@
             <content>
                 <paragraph>I'm a seasoned Full Stack Developer and DevOps Engineer with a passion for creating scalable, enterprise-grade solutions.</paragraph>
                 <stats>
-                    <stat value="50" label="Projects Completed" />
-                    <stat value="5" label="Years Experience" />
-                    <stat value="100" label="Happy Clients" />
+                    <stat value="75" label="Projects Completed" />
+                    <stat value="7" label="Years Experience" />
+                    <stat value="150" label="Happy Clients" />
+                    <stat value="25" label="Technologies Mastered" />
                 </stats>
             </content>
         </about>
@@ -65,16 +66,28 @@
                     <skill name="Python" level="95" />
                     <skill name="Django/FastAPI" level="90" />
                     <skill name="PostgreSQL" level="85" />
+                    <skill name="Node.js" level="82" />
+                    <skill name="Redis" level="78" />
                 </category>
                 <category name="DevOps &amp; Cloud" icon="fas fa-cloud">
                     <skill name="Docker" level="92" />
                     <skill name="Kubernetes" level="80" />
                     <skill name="AWS/GCP" level="88" />
+                    <skill name="Terraform" level="85" />
+                    <skill name="Jenkins/GitHub Actions" level="90" />
                 </category>
                 <category name="Frontend &amp; Tools" icon="fas fa-laptop-code">
                     <skill name="JavaScript/TypeScript" level="85" />
                     <skill name="React/Vue.js" level="80" />
                     <skill name="Git/CI/CD" level="93" />
+                    <skill name="Linux/Bash" level="88" />
+                    <skill name="Monitoring/Grafana" level="75" />
+                </category>
+                <category name="Security &amp; Networking" icon="fas fa-shield-alt">
+                    <skill name="Network Security" level="82" />
+                    <skill name="SSL/TLS" level="85" />
+                    <skill name="Firewall Management" level="80" />
+                    <skill name="Penetration Testing" level="70" />
                 </category>
             </categories>
         </skills>
