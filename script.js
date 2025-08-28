@@ -114,22 +114,52 @@ document.querySelectorAll('section, .about-stats, .skills').forEach(el => {
 
 // Load GitHub repositories
 async function loadGitHubRepos() {
+    const projectsGrid = document.getElementById('projects-grid');
+    
+    // Show loading state
+    projectsGrid.innerHTML = `
+        <div class="project-loading">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Loading GitHub repositories...</p>
+        </div>
+    `;
+    
     try {
+        console.log('Fetching GitHub repositories...');
         const response = await fetch('https://api.github.com/users/GH05TN3T/repos?sort=updated&per_page=6');
+        
+        if (!response.ok) {
+            throw new Error(`GitHub API error: ${response.status} ${response.statusText}`);
+        }
+        
         const repos = await response.json();
+        console.log('GitHub repos loaded:', repos.length);
         
-        const projectsGrid = document.getElementById('projects-grid');
+        // Clear loading state
+        projectsGrid.innerHTML = '';
         
-        repos.forEach(repo => {
-            if (!repo.fork) {
-                const projectCard = createProjectCard(repo);
-                projectsGrid.appendChild(projectCard);
-            }
+        const validRepos = repos.filter(repo => !repo.fork);
+        console.log('Valid repos (non-forks):', validRepos.length);
+        
+        if (validRepos.length === 0) {
+            projectsGrid.innerHTML = '<p class="error-message">No repositories found.</p>';
+            return;
+        }
+        
+        validRepos.forEach(repo => {
+            const projectCard = createProjectCard(repo);
+            projectsGrid.appendChild(projectCard);
         });
+        
     } catch (error) {
         console.error('Error loading GitHub repositories:', error);
-        const projectsGrid = document.getElementById('projects-grid');
-        projectsGrid.innerHTML = '<p class="error-message">Unable to load repositories at this time.</p>';
+        projectsGrid.innerHTML = `
+            <div class="project-loading">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p>Unable to load repositories: ${error.message}</p>
+                <button onclick="loadGitHubRepos()" class="btn btn-primary">Retry</button>
+            </div>
+        `;
     }
 }
 
