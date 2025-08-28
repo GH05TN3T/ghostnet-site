@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://cyborgjedi.com/sitemap.xml
+
+# Disallow sensitive areas
+Disallow: /api/
+Disallow: /_headers
+Disallow: /_redirects
+Disallow: /config.xml

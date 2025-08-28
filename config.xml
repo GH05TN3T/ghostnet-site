@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<portfolio>
+    <metadata>
+        <title>CyborgJedi Portfolio</title>
+        <description>Full Stack Developer &amp; DevOps Engineer</description>
+        <author>CyborgJedi</author>
+        <version>1.0.0</version>
+        <domain>cyborgjedi.com</domain>
+        <email>edgar@cyborgjedi.com</email>
+        <github>GH05TN3T</github>
+        <created>2024-08-28</created>
+    </metadata>
+    
+    <theme>
+        <colors>
+            <primary>#00d4ff</primary>
+            <secondary>#ff6b35</secondary>
+            <accent>#7c3aed</accent>
+            <background>#0a0a0a</background>
+            <text>#ffffff</text>
+        </colors>
+        <fonts>
+            <primary>Inter</primary>
+            <mono>JetBrains Mono</mono>
+        </fonts>
+    </theme>
+    
+    <navigation>
+        <item href="#home" label="Home" />
+        <item href="#about" label="About" />
+        <item href="#skills" label="Skills" />
+        <item href="#projects" label="Projects" />
+        <item href="#contact" label="Contact" />
+    </navigation>
+    
+    <sections>
+        <hero id="home">
+            <title>CyborgJedi</title>
+            <subtitle>Full Stack Developer &amp; DevOps Engineer</subtitle>
+            <description>Crafting robust enterprise solutions with Python, cloud infrastructure, and cutting-edge DevOps practices.</description>
+            <cta>
+                <primary href="#projects">View My Work</primary>
+                <secondary href="#contact">Get In Touch</secondary>
+            </cta>
+        </hero>
+        
+        <about id="about">
+            <title>About Me</title>
+            <subtitle>Passionate about building the future of technology</subtitle>
+            <content>
+                <paragraph>I'm a seasoned Full Stack Developer and DevOps Engineer with a passion for creating scalable, enterprise-grade solutions.</paragraph>
+                <stats>
+                    <stat value="50" label="Projects Completed" />
+                    <stat value="5" label="Years Experience" />
+                    <stat value="100" label="Happy Clients" />
+                </stats>
+            </content>
+        </about>
+        
+        <skills id="skills">
+            <title>Technical Skills</title>
+            <subtitle>Technologies and tools I work with</subtitle>
+            <categories>
+                <category name="Backend Development" icon="fas fa-code">
+                    <skill name="Python" level="95" />
+                    <skill name="Django/FastAPI" level="90" />
+                    <skill name="PostgreSQL" level="85" />
+                </category>
+                <category name="DevOps &amp; Cloud" icon="fas fa-cloud">
+                    <skill name="Docker" level="92" />
+                    <skill name="Kubernetes" level="80" />
+                    <skill name="AWS/GCP" level="88" />
+                </category>
+                <category name="Frontend &amp; Tools" icon="fas fa-laptop-code">
+                    <skill name="JavaScript/TypeScript" level="85" />
+                    <skill name="React/Vue.js" level="80" />
+                    <skill name="Git/CI/CD" level="93" />
+                </category>
+            </categories>
+        </skills>
+        
+        <projects id="projects">
+            <title>Featured Projects</title>
+            <subtitle>My latest work from GitHub repositories</subtitle>
+            <github_integration>
+                <username>GH05TN3T</username>
+                <api_endpoint>https://api.github.com/users/GH05TN3T/repos</api_endpoint>
+                <sort>updated</sort>
+                <limit>6</limit>
+                <exclude_forks>true</exclude_forks>
+            </github_integration>
+        </projects>
+        
+        <contact id="contact">
+            <title>Get In Touch</title>
+            <subtitle>Let's discuss your next project</subtitle>
+            <methods>
+                <method type="email" icon="fas fa-envelope">
+                    <label>Email</label>
+                    <value>edgar@cyborgjedi.com</value>
+                </method>
+                <method type="github" icon="fab fa-github">
+                    <label>GitHub</label>
+                    <value>github.com/GH05TN3T</value>
+                    <url>https://github.com/GH05TN3T</url>
+                </method>
+                <method type="linkedin" icon="fab fa-linkedin">
+                    <label>LinkedIn</label>
+                    <value>Connect with me</value>
+                    <url>https://linkedin.com/in/cyborgjedi</url>
+                </method>
+            </methods>
+            <form>
+                <field name="name" type="text" placeholder="Your Name" required="true" />
+                <field name="email" type="email" placeholder="Your Email" required="true" />
+                <field name="subject" type="text" placeholder="Subject" required="true" />
+                <field name="message" type="textarea" placeholder="Your Message" required="true" rows="5" />
+            </form>
+        </contact>
+    </sections>
+    
+    <social_media>
+        <platform name="github" url="https://github.com/GH05TN3T" icon="fab fa-github" />
+        <platform name="linkedin" url="https://linkedin.com/in/cyborgjedi" icon="fab fa-linkedin" />
+        <platform name="twitter" url="https://twitter.com/cyborgjedi" icon="fab fa-twitter" />
+    </social_media>
+    
+    <seo>
+        <keywords>CyborgJedi, Full Stack Developer, DevOps, Python, Cloud, Infrastructure, Portfolio</keywords>
+        <og_image>assets/og-image.jpg</og_image>
+        <canonical>https://cyborgjedi.com</canonical>
+    </seo>
+    
+    <deployment>
+        <platform>Cloudflare Pages</platform>
+        <domain>cyborgjedi.com</domain>
+        <ssl>true</ssl>
+        <cdn>true</cdn>
+        <analytics>true</analytics>
+    </deployment>
+</portfolio>
