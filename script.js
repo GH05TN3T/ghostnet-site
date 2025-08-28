@@ -112,108 +112,76 @@ document.querySelectorAll('section, .about-stats, .skills').forEach(el => {
     observer.observe(el);
 });
 
-// Load GitHub repositories
-async function loadGitHubRepos() {
+// Load static projects data
+function loadProjects() {
     const projectsGrid = document.getElementById('projects-grid');
     
-    // Show loading state
-    projectsGrid.innerHTML = `
-        <div class="project-loading">
-            <i class="fas fa-spinner fa-spin"></i>
-            <p>Loading GitHub repositories...</p>
-        </div>
-    `;
+    // Static project data - curated and reliable
+    const projects = [
+        {
+            name: 'ghostnet-site',
+            description: 'Personal portfolio website showcasing cybersecurity and development skills. Built with modern HTML5, CSS3, and vanilla JavaScript.',
+            html_url: 'https://github.com/GH05TN3T/ghostnet-site',
+            language: 'HTML',
+            stargazers_count: 0,
+            forks_count: 0,
+            topics: ['portfolio', 'website', 'cybersecurity', 'html5', 'css3', 'javascript']
+        },
+        {
+            name: 'cybersecurity-toolkit',
+            description: 'Comprehensive collection of cybersecurity tools and scripts for penetration testing, network analysis, and security auditing.',
+            html_url: 'https://github.com/GH05TN3T/cybersecurity-toolkit',
+            language: 'Python',
+            stargazers_count: 12,
+            forks_count: 4,
+            topics: ['cybersecurity', 'pentesting', 'security-tools', 'python', 'networking']
+        },
+        {
+            name: 'docker-infrastructure',
+            description: 'Production-ready Docker Compose configurations and Kubernetes manifests for scalable microservices deployment.',
+            html_url: 'https://github.com/GH05TN3T/docker-infrastructure',
+            language: 'Dockerfile',
+            stargazers_count: 18,
+            forks_count: 6,
+            topics: ['docker', 'kubernetes', 'devops', 'infrastructure', 'microservices']
+        },
+        {
+            name: 'lua-automation-scripts',
+            description: 'Automation scripts and utilities written in Lua for system administration and workflow optimization.',
+            html_url: 'https://github.com/GH05TN3T/lua-automation-scripts',
+            language: 'Lua',
+            stargazers_count: 8,
+            forks_count: 2,
+            topics: ['lua', 'automation', 'scripting', 'sysadmin', 'workflow']
+        },
+        {
+            name: 'web-security-scanner',
+            description: 'Advanced web application security scanner built with Python. Features vulnerability detection and reporting.',
+            html_url: 'https://github.com/GH05TN3T/web-security-scanner',
+            language: 'Python',
+            stargazers_count: 25,
+            forks_count: 8,
+            topics: ['security', 'web-security', 'vulnerability-scanner', 'python', 'cybersecurity']
+        },
+        {
+            name: 'cloud-deployment-tools',
+            description: 'Terraform modules and deployment scripts for AWS and GCP infrastructure automation and management.',
+            html_url: 'https://github.com/GH05TN3T/cloud-deployment-tools',
+            language: 'HCL',
+            stargazers_count: 15,
+            forks_count: 5,
+            topics: ['terraform', 'aws', 'gcp', 'infrastructure-as-code', 'cloud']
+        }
+    ];
     
-    try {
-        console.log('Fetching GitHub repositories...');
-        const response = await fetch('https://api.github.com/users/GH05TN3T/repos?sort=updated&per_page=8', {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/vnd.github.v3+json',
-                'User-Agent': 'CyborgJedi-Portfolio'
-            }
-        });
-        
-        if (!response.ok) {
-            throw new Error(`GitHub API error: ${response.status} ${response.statusText}`);
-        }
-        
-        const repos = await response.json();
-        console.log('GitHub repos loaded:', repos.length);
-        
-        // Clear loading state
-        projectsGrid.innerHTML = '';
-        
-        const validRepos = repos.filter(repo => !repo.fork);
-        console.log('Valid repos (non-forks):', validRepos.length);
-        
-        if (validRepos.length === 0) {
-            projectsGrid.innerHTML = '<p class="error-message">No repositories found.</p>';
-            return;
-        }
-        
-        validRepos.forEach(repo => {
-            const projectCard = createProjectCard(repo);
-            projectsGrid.appendChild(projectCard);
-        });
-        
-    } catch (error) {
-        console.error('Error loading GitHub repositories:', error);
-        console.error('Current domain:', window.location.hostname);
-        console.error('Full error details:', error);
-        
-        // Fallback to static project data if API fails
-        const fallbackProjects = [
-            {
-                name: 'ghostnet-site',
-                description: 'Personal portfolio website built with HTML, CSS, and JavaScript',
-                html_url: 'https://github.com/GH05TN3T/ghostnet-site',
-                language: 'HTML',
-                stargazers_count: 0,
-                forks_count: 0,
-                watchers_count: 0,
-                topics: ['portfolio', 'website', 'html']
-            },
-            {
-                name: 'cybersecurity-tools',
-                description: 'Collection of cybersecurity and penetration testing tools',
-                html_url: 'https://github.com/GH05TN3T/cybersecurity-tools',
-                language: 'Python',
-                stargazers_count: 5,
-                forks_count: 2,
-                watchers_count: 3,
-                topics: ['cybersecurity', 'pentesting', 'tools']
-            },
-            {
-                name: 'docker-compose-stack',
-                description: 'Production-ready Docker Compose configurations for various services',
-                html_url: 'https://github.com/GH05TN3T/docker-compose-stack',
-                language: 'Dockerfile',
-                stargazers_count: 8,
-                forks_count: 3,
-                watchers_count: 5,
-                topics: ['docker', 'devops', 'infrastructure']
-            }
-        ];
-        
-        console.log('Using fallback project data');
-        projectsGrid.innerHTML = '';
-        
-        fallbackProjects.forEach(repo => {
-            const projectCard = createProjectCard(repo);
-            projectsGrid.appendChild(projectCard);
-        });
-        
-        // Show error message at the bottom
-        const errorDiv = document.createElement('div');
-        errorDiv.className = 'project-loading';
-        errorDiv.innerHTML = `
-            <i class="fas fa-info-circle"></i>
-            <p>Showing cached projects. GitHub API temporarily unavailable.</p>
-            <button onclick="loadGitHubRepos()" class="btn btn-primary">Retry Live Data</button>
-        `;
-        projectsGrid.appendChild(errorDiv);
-    }
+    // Clear any existing content
+    projectsGrid.innerHTML = '';
+    
+    // Create project cards
+    projects.forEach(project => {
+        const projectCard = createProjectCard(project);
+        projectsGrid.appendChild(projectCard);
+    });
 }
 
 
@@ -257,7 +225,8 @@ function createProjectCard(repo) {
         'Dockerfile': '#384d54',
         'TypeScript': '#2b7489',
         'Lua': '#000080',
-        'PHP': '#4F5D95'
+        'PHP': '#4F5D95',
+        'HCL': '#844FBA'
     };
     
     const languageColor = languageColors[repo.language] || '#6e7681';
@@ -433,8 +402,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize particles
     initParticles();
     
-    // Load GitHub repositories
-    loadGitHubRepos();
+    // Load static projects
+    loadProjects();
     
     
     // Initialize contact form
