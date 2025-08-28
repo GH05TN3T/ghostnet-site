@@ -2,36 +2,36 @@
   "testimonials": [
     {
       "id": 1,
-      "name": "Sarah Chen",
-      "position": "CTO at TechFlow Solutions",
-      "company": "TechFlow Solutions",
-      "avatar": "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
+      "name": "Alex Thompson",
+      "position": "Senior DevOps Engineer",
+      "company": "StartupTech Inc",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
       "rating": 5,
-      "text": "CyborgJedi delivered an exceptional cloud migration project for our enterprise. Their DevOps expertise saved us 40% in infrastructure costs while improving performance by 3x.",
-      "project": "Cloud Migration & Infrastructure Optimization",
-      "date": "2024-07-15"
+      "text": "Worked with them on a Docker containerization project. Clean code, good documentation, and delivered on time. Would definitely collaborate again.",
+      "project": "Docker Container Setup",
+      "date": "2024-08-10"
     },
     {
       "id": 2,
-      "name": "Marcus Rodriguez",
-      "position": "Lead Developer",
-      "company": "InnovateLabs",
-      "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
-      "rating": 5,
-      "text": "Outstanding full-stack development work. The Python backend architecture they built handles millions of requests daily with zero downtime. Truly professional.",
-      "project": "High-Performance API Development",
-      "date": "2024-06-20"
+      "name": "Jennifer Park",
+      "position": "Project Manager",
+      "company": "LocalBiz Solutions",
+      "avatar": "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
+      "rating": 4,
+      "text": "Great communication throughout the project. They helped us set up our Python web application and provided clear instructions for maintenance.",
+      "project": "Web Application Development",
+      "date": "2024-07-22"
     },
     {
       "id": 3,
-      "name": "Emily Watson",
-      "position": "Product Manager",
-      "company": "DataVision Corp",
-      "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+      "name": "Mike Chen",
+      "position": "IT Director",
+      "company": "Regional Services Co",
+      "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
       "rating": 5,
-      "text": "CyborgJedi's security implementation was flawless. They identified and fixed critical vulnerabilities while implementing robust monitoring systems.",
-      "project": "Security Audit & Implementation",
-      "date": "2024-05-10"
+      "text": "Solid work on our server infrastructure upgrade. Professional approach and took time to explain the technical details to our team.",
+      "project": "Infrastructure Setup",
+      "date": "2024-06-15"
     }
   ]
 }
