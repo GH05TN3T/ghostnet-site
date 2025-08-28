@@ -220,6 +220,11 @@ async function loadGitHubRepos() {
 async function loadTestimonials() {
     const testimonialsGrid = document.getElementById('testimonials-grid');
     
+    if (!testimonialsGrid) {
+        console.error('Testimonials grid element not found');
+        return;
+    }
+    
     // Show loading state
     testimonialsGrid.innerHTML = `
         <div class="testimonial-loading">
@@ -229,15 +234,22 @@ async function loadTestimonials() {
     `;
     
     try {
-        console.log('Fetching testimonials...');
-        const response = await fetch('./testimonials.json');
+        console.log('Loading testimonials...');
+        const response = await fetch('./testimonials.json', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Cache-Control': 'no-cache'
+            }
+        });
         
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         
         const data = await response.json();
-        console.log('Testimonials loaded:', data.testimonials.length);
+        console.log('Testimonials data:', data);
+        console.log('Testimonials loaded:', data.testimonials?.length || 0);
         
         // Clear loading state
         testimonialsGrid.innerHTML = '';
