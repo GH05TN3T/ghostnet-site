@@ -216,93 +216,6 @@ async function loadGitHubRepos() {
     }
 }
 
-// Load testimonials
-async function loadTestimonials() {
-    const testimonialsGrid = document.getElementById('testimonials-grid');
-    
-    if (!testimonialsGrid) {
-        console.error('Testimonials grid element not found');
-        return;
-    }
-    
-    // Show loading state
-    testimonialsGrid.innerHTML = `
-        <div class="testimonial-loading">
-            <i class="fas fa-spinner fa-spin"></i>
-            <p>Loading testimonials...</p>
-        </div>
-    `;
-    
-    try {
-        console.log('Loading testimonials...');
-        const response = await fetch('./testimonials.json', {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Cache-Control': 'no-cache'
-            }
-        });
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        console.log('Testimonials data:', data);
-        console.log('Testimonials loaded:', data.testimonials?.length || 0);
-        
-        // Clear loading state
-        testimonialsGrid.innerHTML = '';
-        
-        if (data.testimonials && data.testimonials.length > 0) {
-            data.testimonials.forEach(testimonial => {
-                const testimonialCard = createTestimonialCard(testimonial);
-                testimonialsGrid.appendChild(testimonialCard);
-            });
-        } else {
-            testimonialsGrid.innerHTML = '<p class="error-message">No testimonials available.</p>';
-        }
-        
-    } catch (error) {
-        console.error('Error loading testimonials:', error);
-        testimonialsGrid.innerHTML = `
-            <div class="testimonial-loading">
-                <i class="fas fa-exclamation-triangle"></i>
-                <p>Unable to load testimonials: ${error.message}</p>
-                <button onclick="loadTestimonials()" class="btn btn-primary">Retry</button>
-            </div>
-        `;
-    }
-}
-
-// Create testimonial card
-function createTestimonialCard(testimonial) {
-    const card = document.createElement('div');
-    card.className = 'testimonial-card';
-    
-    const stars = '★'.repeat(testimonial.rating) + '☆'.repeat(5 - testimonial.rating);
-    
-    card.innerHTML = `
-        <div class="testimonial-header">
-            <img src="${testimonial.avatar}" alt="${testimonial.name}" class="testimonial-avatar">
-            <div class="testimonial-info">
-                <h4>${testimonial.name}</h4>
-                <p>${testimonial.position}</p>
-                <div class="testimonial-rating">
-                    ${Array.from({length: testimonial.rating}, () => '<span class="star">★</span>').join('')}
-                </div>
-            </div>
-        </div>
-        <div class="testimonial-text">
-            "${testimonial.text}"
-        </div>
-        <div class="testimonial-project">
-            Project: ${testimonial.project}
-        </div>
-    `;
-    
-    return card;
-}
 
 // GitHub API Integration
 async function fetchGitHubRepos() {
@@ -523,8 +436,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load GitHub repositories
     loadGitHubRepos();
     
-    // Load testimonials
-    loadTestimonials();
     
     // Initialize contact form
     initContactForm();
