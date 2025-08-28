@@ -117,11 +117,6 @@
                     <value>github.com/GH05TN3T</value>
                     <url>https://github.com/GH05TN3T</url>
                 </method>
-                <method type="linkedin" icon="fab fa-linkedin">
-                    <label>LinkedIn</label>
-                    <value>Connect with me</value>
-                    <url>https://linkedin.com/in/cyborgjedi</url>
-                </method>
             </methods>
             <form>
                 <field name="name" type="text" placeholder="Your Name" required="true" />
@@ -134,8 +129,6 @@
     
     <social_media>
         <platform name="github" url="https://github.com/GH05TN3T" icon="fab fa-github" />
-        <platform name="linkedin" url="https://linkedin.com/in/cyborgjedi" icon="fab fa-linkedin" />
-        <platform name="twitter" url="https://twitter.com/cyborgjedi" icon="fab fa-twitter" />
     </social_media>
     
     <seo>
