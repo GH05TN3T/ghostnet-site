@@ -21,8 +21,8 @@
     --gradient-2: linear-gradient(135deg, #ff6b35 0%, #f59e0b 100%);
     
     /* Typography */
-    --font-primary: 'Inter', sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
+    --font-primary: 'Aldrich', sans-serif;
+    --font-mono: 'MADType', monospace;
     
     /* Spacing */
     --section-padding: 5rem 0;
